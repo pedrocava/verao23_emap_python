@@ -69,21 +69,29 @@ def main():
     played_papel = 0
     played_tesoura = 0
 
+    computer_played_pedras = 0
+    computer_played_papel = 0
+    computer_played_tesoura = 0
+
     move = input("Digite pedra, tesoura ou papel para fazer sua jogada. Digite ‘sair’ para terminar o jogo.")
 
-    if move == "pedras":
-
-        played_pedras == played_pedras + 1
-
-    elif move == "papel":
-
-        played_papel = played_papel + 1
-
-    elif move == "tesoura":
-
-        played_tesoura = played_tesoura + 1
-
     while move != "sair":
+
+        # Counting player moves
+
+        if move == "pedras":
+
+            played_pedras == played_pedras + 1
+
+        elif move == "papel":
+
+            played_papel = played_papel + 1
+
+        elif move == "tesoura":
+
+            played_tesoura = played_tesoura + 1
+
+        # Chosing computer move
 
         if difficulty_level == "1":
 
@@ -107,6 +115,20 @@ def main():
 
         print("Minha jogada foi {}".format(computer_move))
 
+        # Counting computer moves
+
+        if computer_move == "pedras":
+
+            computer_played_pedras == computer_played_pedras + 1
+
+        elif computer_move == "papel":
+
+            computer_played_papel = computer_played_papel + 1
+
+        elif computer_move == "tesoura":
+
+            computer_played_tesoura = computer_played_tesoura + 1
+
         result = who_won(move, computer_move)
 
         if result == "computer":
@@ -129,7 +151,32 @@ def main():
 
             n_rounds = n_rounds + 1
 
+        move = input("Digite pedra, tesoura ou papel para fazer sua jogada. Digite ‘sair’ para terminar o jogo.")
 
+    if player_won > computer_won:
+
+        winner = player_name
+
+    elif computer_won > player_won:
+
+        winner = "Computador"
+
+    elif computer_won == player_won:
+
+        winner = "Empatado"
+
+    endgame_message = f"""
+    *** Fim do Jogo ***
+
+    Vencedor: {winner}
+    Número de rodadas: {n_rounds}
+    Número de rodadas que você venceu: {player_won}
+    Número de empates: {draws}
+    Suas jogadas: 
+    Minhas Jogadas:
+    """
+
+    print(endgame_message)
         
 
 
