@@ -119,7 +119,7 @@ def main():
 
         if computer_move == "pedra":
 
-            computer_played_pedra == computer_played_pedra + 1
+            computer_played_pedra = computer_played_pedra + 1
 
         elif computer_move == "papel":
 
@@ -179,9 +179,9 @@ def main():
       - {100*played_papel / n_rounds}% das suas jogadas foram papel
       - {100*played_tesoura / n_rounds}% das suas jogadas foram tesoura
     Minhas Jogadas:
-      - {100*computer_played_pedra / n_rounds}% das suas jogadas foram pedra
-      - {100*computer_played_papel / n_rounds}% das suas jogadas foram papel
-      - {100*computer_played_tesoura / n_rounds}% das suas jogadas foram tesoura
+      - {100*computer_played_pedra / n_rounds}% das minhas jogadas foram pedra
+      - {100*computer_played_papel / n_rounds}% das minhas jogadas foram papel
+      - {100*computer_played_tesoura / n_rounds}% das minhas jogadas foram tesoura
     """
 
     print(endgame_message)
