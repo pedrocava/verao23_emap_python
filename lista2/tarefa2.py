@@ -85,7 +85,7 @@ def main():
 
         if move == "pedra":
 
-            played_pedra == played_pedra + 1
+            played_pedra = played_pedra + 1
 
         elif move == "papel":
 
