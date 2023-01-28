@@ -51,7 +51,7 @@ def who_won(user, computer):
 def main():
 
     player_name = input(
-      "Olá! Bem-vindo(a) ao jogo Pedra, Tesoura e Papel. Por favor, digite o seu nome: ")
+      "Olá! Bem-vindo(a) ao jogo Pedra, Papel ou Tesoura. Por favor, digite o seu nome: ")
 
     difficulty_prompt = """{}, por favor, informe qual nível de jogo você gostaria de jogar.
         Digite 1 para fácil ou 2 para médio:""".format(player_name)
