@@ -6,10 +6,6 @@ def jogadaNivelFacil() -> str:
 
 def jogadaNivelMedio(p_pedra: float, p_papel: float, p_tesoura: float) -> str:
 
-
-    print(f"""Debug! Os pesos passados para jogadaNivelMedio são:
-      {p_pedra} para pedra, {p_papel} para papel e {p_tesoura} para tesoura""")
-
     draw = random.choices(
       ['pedra', 'papel', 'tesoura'],
       [p_pedra, p_papel, p_tesoura])
@@ -62,7 +58,7 @@ def main():
 
     difficulty_level = input(difficulty_prompt)
 
-    print("Você escolheu o nível {}".format(difficulty_level))
+    print("Você escolheu o nível {}.".format(difficulty_level))
 
     n_rounds = 0
     player_won = 0
@@ -77,7 +73,7 @@ def main():
     computer_played_papel = 0
     computer_played_tesoura = 0
 
-    move = input("Digite pedra, tesoura ou papel para fazer sua jogada. Digite ‘sair’ para terminar o jogo.")
+    move = input("Digite pedra, tesoura ou papel para fazer sua jogada. Digite ‘sair’ para terminar o jogo: \n")
 
     while move != "sair":
 
@@ -137,25 +133,25 @@ def main():
 
         if result == "computer":
 
-            print("Ops! Eu ganhei desta vez!")
+            print("Ops! Eu ganhei desta vez! \n")
 
             computer_won = computer_won + 1
             
         elif result == "draw":
 
-            print("Ufa! Foi empate!")
+            print("Ufa! Foi empate! \n")
 
             draws = draws + 1
 
         elif result == "user":
 
-            print("Parabéns, {}, você ganhou esta rodada!".format(player_name))
+            print("Parabéns, {}, você ganhou esta rodada! \n".format(player_name))
 
             player_won = player_won + 1
 
         n_rounds = n_rounds + 1
 
-        move = input("Digite pedra, tesoura ou papel para fazer sua jogada. Digite ‘sair’ para terminar o jogo.")
+        move = input("Digite pedra, tesoura ou papel para fazer sua jogada. Digite ‘sair’ para terminar o jogo: \n")
 
     if player_won > computer_won:
 
@@ -169,6 +165,8 @@ def main():
 
         winner = "Empatado"
 
+    
+
     endgame_message = f"""
     *** Fim do Jogo ***
 
@@ -177,7 +175,13 @@ def main():
     Número de rodadas que você venceu: {player_won}
     Número de empates: {draws}
     Suas jogadas: 
+      - {100*played_pedra / n_rounds}% das suas jogadas foram pedra
+      - {100*played_papel / n_rounds}% das suas jogadas foram papel
+      - {100*played_tesoura / n_rounds}% das suas jogadas foram tesoura
     Minhas Jogadas:
+      - {100*computer_played_pedra / n_rounds}% das suas jogadas foram pedra
+      - {100*computer_ / n_rounds}% das suas jogadas foram papel
+      - {100*computer_played_tesoura / n_rounds}% das suas jogadas foram tesoura
     """
 
     print(endgame_message)
