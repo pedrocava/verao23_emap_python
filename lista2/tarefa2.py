@@ -6,6 +6,10 @@ def jogadaNivelFacil() -> str:
 
 def jogadaNivelMedio(p_pedra: float, p_papel: float, p_tesoura: float) -> str:
 
+
+    print(f"""Debug! Os pesos passados para jogadaNivelMedio são:
+      {p_pedra} para pedra, {p_papel} para papel e {p_tesoura} para tesoura""")
+
     draw = random.choices(
       ['pedra', 'papel', 'tesoura'],
       [p_pedra, p_papel, p_tesoura])
@@ -65,11 +69,11 @@ def main():
     computer_won = 0
     draws = 0
 
-    played_pedras = 0
+    played_pedra = 0
     played_papel = 0
     played_tesoura = 0
 
-    computer_played_pedras = 0
+    computer_played_pedra = 0
     computer_played_papel = 0
     computer_played_tesoura = 0
 
@@ -79,9 +83,9 @@ def main():
 
         # Counting player moves
 
-        if move == "pedras":
+        if move == "pedra":
 
-            played_pedras == played_pedras + 1
+            played_pedra == played_pedra + 1
 
         elif move == "papel":
 
@@ -107,7 +111,7 @@ def main():
 
             else:
 
-              w_pedra = played_pedras / n_rounds
+              w_pedra = played_pedra / n_rounds
               w_papel = played_papel / n_rounds
               w_tesoura = played_tesoura / n_rounds
 
@@ -117,9 +121,9 @@ def main():
 
         # Counting computer moves
 
-        if computer_move == "pedras":
+        if computer_move == "pedra":
 
-            computer_played_pedras == computer_played_pedras + 1
+            computer_played_pedra == computer_played_pedra + 1
 
         elif computer_move == "papel":
 
@@ -149,7 +153,7 @@ def main():
 
             player_won = player_won + 1
 
-            n_rounds = n_rounds + 1
+        n_rounds = n_rounds + 1
 
         move = input("Digite pedra, tesoura ou papel para fazer sua jogada. Digite ‘sair’ para terminar o jogo.")
 
