@@ -180,7 +180,7 @@ def main():
       - {100*played_tesoura / n_rounds}% das suas jogadas foram tesoura
     Minhas Jogadas:
       - {100*computer_played_pedra / n_rounds}% das suas jogadas foram pedra
-      - {100*computer_ / n_rounds}% das suas jogadas foram papel
+      - {100*computer_played_papel / n_rounds}% das suas jogadas foram papel
       - {100*computer_played_tesoura / n_rounds}% das suas jogadas foram tesoura
     """
 
