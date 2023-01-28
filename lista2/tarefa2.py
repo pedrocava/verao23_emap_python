@@ -4,7 +4,7 @@ def jogadaNivelFacil() -> str:
 
     return random.choice(['pedra', 'papel', 'tesoura'])
 
-def jogadaNivelMedio(p_pedra: float, p_tesoura: float, p_papel: float) -> str:
+def jogadaNivelMedio(p_pedra: float, p_papel: float, p_tesoura: float) -> str:
 
     draw = random.choices(
       ['pedra', 'papel', 'tesoura'],
@@ -58,7 +58,7 @@ def main():
 
     difficulty_level = input(difficulty_prompt)
 
-    print("Você escolhei o nível {}".format(difficulty_level))
+    print("Você escolheu o nível {}".format(difficulty_level))
 
     n_rounds = 0
     player_won = 0
@@ -69,50 +69,68 @@ def main():
     played_papel = 0
     played_tesoura = 0
 
-    if difficulty_level == "1":
+    move = input("Digite pedra, tesoura ou papel para fazer sua jogada. Digite ‘sair’ para terminar o jogo.")
 
-        move = input("Digite pedra, tesoura ou papel para fazer sua jogada. Digite ‘sair’ para terminar o jogo.")
+    if move == "pedras":
 
-        if move == "pedras":
+        played_pedras == played_pedras + 1
 
-            played_pedras == played_pedras + 1
+    elif move == "papel":
 
-        elif move == "papel":
+        played_papel = played_papel + 1
 
-            played_papel = played_papel + 1
+    elif move == "tesoura":
 
-        elif move == "tesoura":
+        played_tesoura = played_tesoura + 1
 
-            played_tesoura = played_tesoura + 1
+    while move != "sair":
 
-        while move != "sair":
+        if difficulty_level == "1":
 
             computer_move = jogadaNivelFacil()
 
-            print("Minha jogada foi {}".format(computer_move))
+        elif difficulty_level == "2":
 
-            result = who_won(move, computer_move)
+            if n_rounds == 0:
 
-            if result == "computer":
+              w_pedra = 1
+              w_papel = 1
+              w_tesoura = 1
 
-                print("Ops! Eu ganhei desta vez!")
+            else:
 
-                computer_won = computer_won + 1
+              w_pedra = played_pedras / n_rounds
+              w_papel = played_papel / n_rounds
+              w_tesoura = played_tesoura / n_rounds
+
+            computer_move = jogadaNivelMedio(w_pedra, w_papel, w_tesoura)
+
+        print("Minha jogada foi {}".format(computer_move))
+
+        result = who_won(move, computer_move)
+
+        if result == "computer":
+
+            print("Ops! Eu ganhei desta vez!")
+
+            computer_won = computer_won + 1
             
-            elif result == "draw":
+        elif result == "draw":
 
-                print("Ufa! Foi empate!")
+            print("Ufa! Foi empate!")
 
-                draws = draws + 1
+            draws = draws + 1
 
-            elif result == "user":
+        elif result == "user":
 
-                print("Parabéns, {}, você ganhou esta rodada!".format(player_name))
+            print("Parabéns, {}, você ganhou esta rodada!".format(player_name))
 
-                player_won = player_won + 1
+            player_won = player_won + 1
 
             n_rounds = n_rounds + 1
 
+
+        
 
 
 
