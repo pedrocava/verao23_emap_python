@@ -17,9 +17,9 @@ def valid_input(s: str) -> bool:
 
     stack = []
 
-    solution = None
+    solution = True
 
-    for index, symbol in enumerate(s):
+    for symbol in s:
 
         if symbol in ["(", "[", "{"]:
 
@@ -27,21 +27,26 @@ def valid_input(s: str) -> bool:
 
         else: 
         
-            if len(stack) > 0:          
+            if len(stack) > 0:   
 
-                if symbol is ")" and stack[0] is not "(":
+                # Nesse caso existe um elemento no topo da pilha que foi 
+                # aberto e testamos correspondência entre os dois
+
+                top = stack.pop()  
+
+                if symbol == ")" and top != "(":
 
                     solution = False
 
                     break
 
-                if symbol is "]" and stack[0] is not "[":
+                if symbol == "]" and top != "[":
 
                     solution = False
 
                     break
 
-                if symbol is "}" and stack[0] is not "{":
+                if symbol == "}" and top != "{":
 
                     solution = False
 
@@ -49,9 +54,16 @@ def valid_input(s: str) -> bool:
 
             else:
 
+                # se há um elemento sendo fechado sem nenhum aberto
+                # correspondente na pilha então o input é inválido
+
                 solution = False
+
+                break
 
     return solution
 
 valid_input("(){}[]")
-
+valid_input("(](}")
+valid_input("[[[]]]")
+valid_input("[[[]])")
