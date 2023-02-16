@@ -72,9 +72,9 @@ valid_input("[[[]])")
 
 def tokenizer(s: str) -> list:
 
-    return re.findall(r"([\d.]+|[-+*/^()])", s)
+    return re.findall(r"([\d.]+|[-+*/])", s)
 
-tokenizer('35+2/4')
+tokenizer('35+2/4*2-1')
 
 def parser(s: str):
 
@@ -190,4 +190,4 @@ def computer(input, feels_human = True):
 
 computer(parser(tokenizer("3*2+5")))
 
-computer("3*2+5")
+computer("3*2+15/4-9")
