@@ -81,8 +81,6 @@ def parser(s: str):
 
     for index, symbol in enumerate(s):
 
-        print(f"Index: {index}, symbol: {symbol}")
-
         if symbol not in ['+', '-', '/', '*']:
 
             output[index] = int(symbol)
@@ -93,11 +91,11 @@ def parser(s: str):
 
     return output
 
-def computer(input: str) -> int:
+def compute(input: str) -> int:
 
     if '*' in input:
 
-        position = input.find('*')
+        position = input.index('*')
 
         lhs = position - 1
         rhs = position + 1
@@ -108,11 +106,69 @@ def computer(input: str) -> int:
         new_input[position] = result
         
         del new_input[lhs]
-        del new_input[rhs]
+        del new_input[lhs + 1]
 
-        return computer(new_input)
+        return compute(new_input)
 
-computer(parser(tokenizer("3*2+5")))
+    if '/' in input:
+
+        position = input.index('/')
+
+        lhs = position - 1
+        rhs = position + 1
+
+        result = input[lhs] // input[rhs]
+
+        new_input = input
+        new_input[position] = result
+        
+        del new_input[lhs]
+        del new_input[lhs + 1]
+
+        return compute(new_input)
+
+    if '+' in input:
+
+        position = input.index('+')
+
+        lhs = position - 1
+        rhs = position + 1
+
+        result = input[lhs] + input[rhs]
+
+        new_input = input
+        new_input[position] = result
+        
+        del new_input[lhs]
+        del new_input[lhs + 1]
+
+        return compute(new_input)
+
+    if '-' in input:
+
+        position = input.index('-')
+
+        lhs = position - 1
+        rhs = position + 1
+
+        result = input[lhs] - input[rhs]
+
+        new_input = input
+        new_input[position] = result
+        
+        del new_input[lhs]
+        del new_input[lhs + 1]
+
+        return compute(new_input)
+    
+    else:
+
+        return input
+
+
+compute(parser(tokenizer("3*2+5")))
+
+compute(parser(tokenizer("7/3+5")))
 
 
 
