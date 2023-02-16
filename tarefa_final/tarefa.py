@@ -114,26 +114,24 @@ def compute(input):
         del new_input[lhs]
         del new_input[lhs + 1]
 
-        print(f"Code Tree now looks like: {new_input}")
-
         return compute(new_input)
 
-    if '\\/' in input:
-        # aqui temos um problema de escape character da / no windows?
-        position = input.index('/')
+    if r"/" in input:
+        # r"/" pois aqui temos um problema de escape character da / no windows?
+        position = input.index(r"/")
 
         lhs = position - 1
         rhs = position + 1
 
-        result = input[lhs] // input[rhs]
+        result = input[lhs].__floordiv__(input[rhs])
+
+        print(f"Divided {input[lhs]} and {input[rhs]}, got {result}")
 
         new_input = input
         new_input[position] = result
         
         del new_input[lhs]
         del new_input[lhs + 1]
-
-        print(f"Code Tree now looks like: {new_input}")
 
         return compute(new_input)
 
@@ -173,7 +171,7 @@ def compute(input):
     
     else:
 
-        return input
+        return input[0]
 
 # funciona dos dois jeitos :)
 
@@ -182,9 +180,9 @@ compute("3*2+5")
 
 compute("192837 - 293847 * 123876")
 
-compute(" 872 - 7623 / 5434 *18")
+compute(" 872 - 7623*500 / 5434 * 18")
 
-
+compute("5627*253642 / 123 + 12837 - 94867345 + 349*27 / 23 - 97/12")
 
 
 
