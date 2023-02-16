@@ -106,16 +106,20 @@ def compute(input):
 
         result = input[lhs] * input[rhs]
 
+        print(f"Multiplied {input[lhs]} and {input[rhs]}, got {result}")
+
         new_input = input
         new_input[position] = result
         
         del new_input[lhs]
         del new_input[lhs + 1]
 
+        print(f"Code Tree now looks like: {new_input}")
+
         return compute(new_input)
 
-    if '/' in input:
-
+    if '\\/' in input:
+        # aqui temos um problema de escape character da / no windows?
         position = input.index('/')
 
         lhs = position - 1
@@ -128,6 +132,8 @@ def compute(input):
         
         del new_input[lhs]
         del new_input[lhs + 1]
+
+        print(f"Code Tree now looks like: {new_input}")
 
         return compute(new_input)
 
@@ -169,10 +175,14 @@ def compute(input):
 
         return input
 
+# funciona dos dois jeitos :)
 
 compute(parser(tokenizer("3*2+5")))
+compute("3*2+5")
 
-compute(parser(tokenizer("7/3+5")))
+compute("192837 - 293847 * 123876")
+
+compute(" 872 - 7623 / 5434 *18")
 
 
 
