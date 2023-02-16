@@ -1,4 +1,4 @@
-
+import re
 
 ## Exerício 1
 
@@ -71,9 +71,9 @@ valid_input("[[[]])")
 
 def tokenizer(s: str) -> list:
 
-    return [*s.strip()]
+    return re.findall(r"([\d.]+|[-+*/^()])", s)
 
-tokenizer('3+2/4')
+tokenizer('35+2/4')
 
 def parser(s: str):
 
@@ -91,7 +91,11 @@ def parser(s: str):
 
     return output
 
-def compute(input: str) -> int:
+def compute(input):
+
+    if isinstance(input, str):
+
+        input = parser(tokenizer(input))
 
     if '*' in input:
 
