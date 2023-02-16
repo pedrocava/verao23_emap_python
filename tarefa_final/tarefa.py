@@ -1,3 +1,4 @@
+import time
 import re
 
 ## Exerício 1
@@ -91,7 +92,7 @@ def parser(s: str):
 
     return output
 
-def compute(input):
+def computer(input, feels_human = True):
 
     if isinstance(input, str):
 
@@ -114,7 +115,9 @@ def compute(input):
         del new_input[lhs]
         del new_input[lhs + 1]
 
-        return compute(new_input)
+        if feels_human: time.sleep(0.2)
+
+        return computer(new_input)
 
     if r"/" in input:
         # r"/" pois aqui temos um problema de escape character da / no windows?
@@ -133,7 +136,9 @@ def compute(input):
         del new_input[lhs]
         del new_input[lhs + 1]
 
-        return compute(new_input)
+        if feels_human: time.sleep(0.2)
+
+        return computer(new_input)
 
     if '+' in input:
 
@@ -144,13 +149,17 @@ def compute(input):
 
         result = input[lhs] + input[rhs]
 
+        print(f"Summed {input[lhs]} and {input[rhs]}, got {result}")
+
         new_input = input
         new_input[position] = result
         
         del new_input[lhs]
         del new_input[lhs + 1]
 
-        return compute(new_input)
+        if feels_human: time.sleep(0.2)
+
+        return computer(new_input)
 
     if '-' in input:
 
@@ -161,13 +170,17 @@ def compute(input):
 
         result = input[lhs] - input[rhs]
 
+        print(f"Subtracted {input[lhs]} and {input[rhs]}, got {result}")
+
         new_input = input
         new_input[position] = result
         
         del new_input[lhs]
         del new_input[lhs + 1]
 
-        return compute(new_input)
+        if feels_human: time.sleep(0.2)
+
+        return computer(new_input)
     
     else:
 
@@ -175,15 +188,6 @@ def compute(input):
 
 # funciona dos dois jeitos :)
 
-compute(parser(tokenizer("3*2+5")))
-compute("3*2+5")
+computer(parser(tokenizer("3*2+5")))
 
-compute("192837 - 293847 * 123876")
-
-compute(" 872 - 7623*500 / 5434 * 18")
-
-compute("5627*253642 / 123 + 12837 - 94867345 + 349*27 / 23 - 97/12")
-
-
-
-
+computer("3*2+5")
