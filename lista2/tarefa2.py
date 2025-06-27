@@ -76,41 +76,23 @@ def main():
     move = input("Digite pedra, tesoura ou papel para fazer sua jogada. Digite ‘sair’ para terminar o jogo: \n")
 
     while move != "sair":
-
-        # Counting player moves
-
         if move == "pedra":
-
             played_pedra = played_pedra + 1
-
         elif move == "papel":
-
             played_papel = played_papel + 1
-
         elif move == "tesoura":
-
             played_tesoura = played_tesoura + 1
-
-        # Chosing computer move
-
         if difficulty_level == "1":
-
             computer_move = jogadaNivelFacil()
-
         elif difficulty_level == "2":
-
             if n_rounds == 0:
-
               w_pedra = 1
               w_papel = 1
               w_tesoura = 1
-
             else:
-
               w_pedra = played_pedra / n_rounds
               w_papel = played_papel / n_rounds
               w_tesoura = played_tesoura / n_rounds
-
             computer_move = jogadaNivelMedio(w_pedra, w_papel, w_tesoura)
 
         print("Minha jogada foi {}".format(computer_move))
