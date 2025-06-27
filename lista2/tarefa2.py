@@ -10,7 +10,7 @@ def jogadaNivelMedio(p_pedra: float, p_papel: float, p_tesoura: float) -> str:
       ['pedra', 'papel', 'tesoura'],
       [p_pedra, p_papel, p_tesoura])
 
-    return draw[0] # random.choices returns a a list with a single element
+    return draw[0]
 
 def who_won(user, computer):
 
